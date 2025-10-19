@@ -344,7 +344,16 @@ with tab_overview:
         st.write(extractive_summary(week_text, n_sentences=6) if week_text.strip() else "No content this week.")
 
     st.subheader("Top topic keywords this week")
-    topk = top_keywords_corpus(df.loc[week_mask, 'content'].tolist() or [""])
+    week_texts = df.loc[week_mask, 'content'].dropna().tolist()
+if not week_texts:
+    st.warning("No transcripts found for the selected week — skipping keyword analysis.")
+    topk = []
+else:
+    try:
+        topk = top_keywords_corpus(week_texts, top_n=15)
+    except ValueError:
+        st.warning("Not enough textual data to extract keywords.")
+        topk = []
     if topk:
         st.write(", ".join([k for k,_ in topk[:15]]))
 
@@ -500,6 +509,7 @@ if not recent.empty:
 # ----------------- Footer -----------------
 st.markdown("---")
 st.caption("LLM features enabled when OPENAI_API_KEY present in Streamlit Secrets. Built with Streamlit + OpenAI + NLTK + scikit-learn.")
+
 
 
 
