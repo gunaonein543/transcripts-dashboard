@@ -156,7 +156,10 @@ def load_df(uploaded_file, use_default_file):
     df['id'] = df.get('id', pd.Series([str(uuid.uuid4()) for _ in range(len(df))]))
     df['participant'] = df.get('participant', df.get('speaker', 'Unknown'))
     df['content'] = df['content'].fillna('').apply(clean_text)
-    df['duration'] = pd.to_numeric(df.get('duration', 0), errors='coerce').fillna(0)
+    if 'duration' in df.columns:
+    df['duration'] = pd.to_numeric(df['duration'], errors='coerce').fillna(0)
+else:
+    df['duration'] = 0
     # priority fallback
     df['priority'] = df.get('priority', '')
     return df
@@ -460,4 +463,5 @@ if not recent.empty:
 # ---------- Footer ----------
 st.markdown("---")
 st.caption("Built with ❤️ — Extractive summarization, TF-IDF topic extraction, VADER sentiment. For advanced AI features (LLM summarization, STT), we can integrate external APIs/models.")
+
 
