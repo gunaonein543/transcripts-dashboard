@@ -16,8 +16,8 @@ import plotly.express as px
 from collections import Counter
 import re
 
-CSV_PATH = r"C:\Users\gunao\transcripts_dashboard\all_transcripts (3).csv"
-JSON_PATH = r"C:\Users\gunao\transcripts_dashboard\napster-transcript-analysis-2025-10-19.json"
+CSV_PATH = "all_transcripts (3).csv"
+JSON_PATH = "napster-transcript-analysis-2025-10-19.json"
 
 st.set_page_config(page_title="Transcripts Dashboard", layout="wide")
 
@@ -250,3 +250,4 @@ csv_bytes = to_csv_bytes(f)
 st.download_button("Download filtered CSV", data=csv_bytes, file_name="filtered_transcripts.csv", mime="text/csv")
 
 st.caption("Streamlit app created to mirror your JSON structure and visualize the uploaded CSV.")
+
