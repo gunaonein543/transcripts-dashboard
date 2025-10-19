@@ -287,8 +287,8 @@ topic_contains = st.sidebar.text_input("Topic contains (keyword)")
 priority_sel = st.sidebar.selectbox("Priority", ['All'] + sorted(df['priority'].dropna().unique().tolist()))
 
 f = df.copy()
-start_date, end_date = date_range
-f = f[(f['date_only'] >= start_date) & (f['date_only'] <= end_date)]
+start_date = pd.to_datetime(start_date)
+end_date = pd.to_datetime(end_date)
 if sel_participant != 'All':
     f = f[f['participant'] == sel_participant]
 if sel_sent != 'All':
@@ -484,3 +484,4 @@ if not recent.empty:
 # ----------------- Footer -----------------
 st.markdown("---")
 st.caption("LLM features enabled when OPENAI_API_KEY present in Streamlit Secrets. Built with Streamlit + OpenAI + NLTK + scikit-learn.")
+
