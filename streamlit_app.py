@@ -9,6 +9,31 @@
 #     streamlit run /mnt/data/streamlit_app.py
 
 import streamlit as st
+# --- Simple password gate using Streamlit secrets ---
+def check_password():
+    """Returns True if the correct password is entered."""
+    def password_entered():
+        if st.session_state["password"] == st.secrets["password"]:
+            st.session_state["password_correct"] = True
+            del st.session_state["password"]  # remove password from memory
+        else:
+            st.session_state["password_correct"] = False
+
+    if "password_correct" not in st.session_state:
+        # First run, ask for password
+        st.text_input("Enter password:", type="password", on_change=password_entered, key="password")
+        return False
+    elif not st.session_state["password_correct"]:
+        # Wrong password
+        st.text_input("Enter password:", type="password", on_change=password_entered, key="password")
+        st.error("🔒 Incorrect password")
+        return False
+    else:
+        # Correct password
+        return True
+
+if not check_password():
+    st.stop()  # stop app until correct password entered
 import pandas as pd
 import json
 from pathlib import Path
@@ -250,4 +275,5 @@ csv_bytes = to_csv_bytes(f)
 st.download_button("Download filtered CSV", data=csv_bytes, file_name="filtered_transcripts.csv", mime="text/csv")
 
 st.caption("Streamlit app created to mirror your JSON structure and visualize the uploaded CSV.")
+
 
