@@ -54,7 +54,7 @@ def check_password():
     def submit():
         st.session_state["password_correct"] = (st.session_state.password == st.secrets["password"])
         if st.session_state["password_correct"]:
-            st.experimental_rerun()
+            st.rerun()
     st.text_input("Enter dashboard password", type="password", key="password", on_change=submit)
     if "password_correct" in st.session_state and not st.session_state["password_correct"]:
         st.error("🔒 Incorrect password")
@@ -460,3 +460,4 @@ if not recent.empty:
 # ---------- Footer ----------
 st.markdown("---")
 st.caption("Built with ❤️ — Extractive summarization, TF-IDF topic extraction, VADER sentiment. For advanced AI features (LLM summarization, STT), we can integrate external APIs/models.")
+
