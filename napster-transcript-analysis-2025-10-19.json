@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2025-10-19T16:36:21.149Z",
+  "totalTranscripts": 6,
+  "data": [
+    {
+      "id": "1",
+      "date": "2024-10-19",
+      "participant": "Client Meeting - Tech Lead",
+      "content": "Discussed the new streaming algorithm implementation. The team is excited about the performance improvements, but we need to address the delayed rollout timeline.",
+      "sentiment": "positive",
+      "priority": "high",
+      "topics": [
+        "streaming",
+        "algorithm",
+        "performance",
+        "timeline"
+      ],
+      "duration": 45
+    },
+    {
+      "id": "2",
+      "date": "2024-10-18",
+      "participant": "Product Review - Marketing",
+      "content": "User engagement metrics are showing concerning trends. We need urgent action on the retention strategy. The Q4 numbers are at risk.",
+      "sentiment": "negative",
+      "priority": "urgent",
+      "topics": [
+        "engagement",
+        "retention",
+        "Q4",
+        "metrics"
+      ],
+      "duration": 30
+    },
+    {
+      "id": "3",
+      "date": "2024-10-17",
+      "participant": "Team Standup - Development",
+      "content": "Sprint progress is on track. New features are being well received by beta users. No major blockers identified.",
+      "sentiment": "positive",
+      "priority": "medium",
+      "topics": [
+        "sprint",
+        "features",
+        "beta",
+        "progress"
+      ],
+      "duration": 15
+    },
+    {
+      "id": "4",
+      "date": "2024-10-16",
+      "participant": "Customer Support Review",
+      "content": "Escalation in support tickets related to playlist synchronization. Users are frustrated with the delayed sync times.",
+      "sentiment": "negative",
+      "priority": "high",
+      "topics": [
+        "support",
+        "playlist",
+        "synchronization",
+        "escalation"
+      ],
+      "duration": 25
+    },
+    {
+      "id": "5",
+      "date": "2024-10-15",
+      "participant": "Strategy Meeting - Leadership",
+      "content": "Quarterly review shows strong growth in premium subscriptions. The team celebrated reaching our milestone targets.",
+      "sentiment": "positive",
+      "priority": "medium",
+      "topics": [
+        "quarterly",
+        "growth",
+        "premium",
+        "milestone"
+      ],
+      "duration": 60
+    },
+    {
+      "id": "6",
+      "date": "2024-10-14",
+      "participant": "Technical Debt Review",
+      "content": "Critical infrastructure issues identified. Need immediate attention to prevent system outages. Escalating to CTO.",
+      "sentiment": "negative",
+      "priority": "urgent",
+      "topics": [
+        "infrastructure",
+        "critical",
+        "outages",
+        "escalation"
+      ],
+      "duration": 40
+    }
+  ],
+  "summary": {
+    "sentimentBreakdown": {
+      "positive": 3,
+      "negative": 3,
+      "neutral": 0
+    },
+    "priorityBreakdown": {
+      "urgent": 2,
+      "high": 2,
+      "medium": 2,
+      "low": 0
+    }
+  }
+}
