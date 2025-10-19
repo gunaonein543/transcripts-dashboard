@@ -328,7 +328,11 @@ tab_overview, tab_trends, tab_transcripts, tab_actions = st.tabs(["📈 Overview
 # ----- Overview -----
 with tab_overview:
     st.header("Weekly summary (LLM if enabled)")
-    week_mask = (df['date_only'] >= one_week_ago) & (df['date_only'] <= today)
+    week_mask = (
+    pd.to_datetime(df['date_only']) >= pd.to_datetime(one_week_ago)
+) & (
+    pd.to_datetime(df['date_only']) <= pd.to_datetime(today)
+)
     week_text = "\n".join(df.loc[week_mask, 'content'].astype(str).tolist())[:3000]
     if OPENAI_KEY and week_text.strip():
         with st.spinner("Generating abstractive summary using OpenAI..."):
@@ -496,5 +500,6 @@ if not recent.empty:
 # ----------------- Footer -----------------
 st.markdown("---")
 st.caption("LLM features enabled when OPENAI_API_KEY present in Streamlit Secrets. Built with Streamlit + OpenAI + NLTK + scikit-learn.")
+
 
 
